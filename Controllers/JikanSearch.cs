@@ -5,7 +5,7 @@ namespace tamnime.Controllers;
 
 public class JikanSearch
 {
-    public async Task<IEnumerable<Anime>> searchAnime(String query)
+    public async Task<IEnumerable<Anime>> searchAnime(string query)
     {
         List<Anime> animeList = new List<Anime>();
 

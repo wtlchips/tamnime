@@ -8,10 +8,10 @@ namespace tamnime.Controllers;
 public class AnimeSearch : ControllerBase
 {
     [HttpGet]
-    public IEnumerable<Anime> GetAnimeSearch()
+    public IEnumerable<Anime> GetAnimeSearch(string query)
     {
         var _jikan = new JikanSearch();
-        var results = _jikan.searchAnime("nagi").GetAwaiter().GetResult();
+        var results = _jikan.searchAnime(query).GetAwaiter().GetResult();
         foreach(Anime anime in results)
         {
             Console.WriteLine(anime.title);

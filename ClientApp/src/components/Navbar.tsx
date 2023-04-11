@@ -14,6 +14,9 @@ type NavbarProps = {
   title: string
   setMode: React.Dispatch<React.SetStateAction<"light" | "dark">>
   mode: "light" | "dark"
+  handleSearch: (e: any) => void
+  setSearch: React.Dispatch<React.SetStateAction<string>>
+  search: string
 }
 
 const StyledToolbar = styled(Toolbar)({
@@ -59,7 +62,7 @@ const Icons = styled(Box)(({ theme }) => ({
   display: 'flex'
 }));
 
-const Navbar = ({ title, setMode, mode }: NavbarProps): ReactElement => {
+const Navbar = ({ title, setMode, mode, handleSearch, setSearch, search }: NavbarProps): ReactElement => {
   const [anchorElSettings, setAnchorElSettings] = React.useState<null | HTMLElement>(null);
 
   const handleOpenSettingsMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -79,10 +82,14 @@ const Navbar = ({ title, setMode, mode }: NavbarProps): ReactElement => {
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
-          />
+          <form onSubmit={handleSearch}>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+            />
+          </form>
         </Search>
         <Icons>
           <IconButton color="inherit" onClick={handleOpenSettingsMenu}>
@@ -109,7 +116,7 @@ const Navbar = ({ title, setMode, mode }: NavbarProps): ReactElement => {
           >
             <MenuItem>
               <DarkModeIcon></DarkModeIcon>
-              <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}></Switch>
+              <Switch onChange={e => setMode(mode === "light" ? "dark" : "light")}></Switch>
             </MenuItem>
           </Menu>
         </Icons>
