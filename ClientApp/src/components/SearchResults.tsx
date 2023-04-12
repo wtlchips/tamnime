@@ -1,26 +1,18 @@
 import { Box, Grid } from '@mui/material'
 import AnimeCard from './AnimeCard'
 
-function SearchResults() {
+type SearchResultsProps = {
+    animeList: any[]
+}
+
+function SearchResults({ animeList }: SearchResultsProps) {
+    console.log(animeList);
     return (
         <Box p={2}>
             <Grid container spacing={2} columnSpacing={2}>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
-                <Grid item><AnimeCard></AnimeCard></Grid>
+                {animeList.map(anime => (
+                    <Grid item><AnimeCard anime={anime}></AnimeCard></Grid>
+                ))}
             </Grid>
         </Box>
     )

@@ -2,7 +2,11 @@ import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 import AnimeDetails from './AnimeDetails';
 import { useState } from 'react'
 
-function AnimeCard() {
+type AnimeCardProps = {
+    anime: any
+}
+
+function AnimeCard({ anime }: AnimeCardProps) {
     const [showDetails, setShowDetails] = useState(false);
 
     const handleOpen = () => {
@@ -14,18 +18,19 @@ function AnimeCard() {
             <Card sx={{ maxWidth: 225 }} onClick={() => handleOpen()}>
                 <CardMedia
                     sx={{ width: 225, height: 318 }}
-                    image="https://cdn.myanimelist.net/images/anime/7/53549.jpg"
-                    title="Nagi no Asu kara"
+                    image={anime['images']['jpg']['image_url']}
+                    title={anime['title']}
                 />
                 <CardContent>
                     <Typography>
-                        Nagi no Asu kara
+                        {anime['title']}
                     </Typography>
                 </CardContent>
             </Card>
             <AnimeDetails
                 open={showDetails}
                 handleCloseDialog={() => setShowDetails(false)}
+                anime={anime}
             />
         </>
     )
