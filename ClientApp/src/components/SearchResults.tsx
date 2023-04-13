@@ -6,7 +6,6 @@ type SearchResultsProps = {
 }
 
 function SearchResults({ animeList }: SearchResultsProps) {
-    console.log(animeList);
     return (
         <Box p={2}>
             <Grid container spacing={2} columnSpacing={2}>

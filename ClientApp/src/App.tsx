@@ -15,7 +15,7 @@ function App() {
     }
   });
 
-  const HandleSearch = async (e: any) => {
+  const HandleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setAnimeList(await searchAnime(search));
   }
